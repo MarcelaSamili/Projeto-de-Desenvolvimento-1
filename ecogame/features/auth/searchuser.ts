@@ -1,3 +1,5 @@
+{
+  /*
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/services/firebase';
 
@@ -8,4 +10,6 @@ export async function getUserData(uid: string) {
   if (docSnap.exists()) {
     return docSnap.data();
   }
+}
+*/
 }

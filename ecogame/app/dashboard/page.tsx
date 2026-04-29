@@ -79,6 +79,20 @@ export default function Dashboard() {
       >
         Sair
       </button>
+      {/* RANKING */}
+      <button
+        onClick={() => router.push('/ranking')}
+        className="bg-blue-500 px-4 py-2 rounded-xl ml-2"
+      >
+        Ver Ranking 🏆
+      </button>
+      {/* PROFILE */}
+      <button
+        onClick={() => router.push('/profile')}
+        className="bg-purple-500 px-4 py-2 rounded-xl ml-2"
+      >
+        Perfil 👤
+      </button>
     </main>
   );
 }
