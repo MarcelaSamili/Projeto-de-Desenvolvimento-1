@@ -5,18 +5,58 @@ import { questions } from '@/data/questions';
 import { addXP } from '@/features/quiz/addXP';
 import { auth } from '@/services/firebase';
 import { useRouter } from 'next/navigation';
-
+import { shuffleArray } from '@/utils/shuffle';
+import { useEffect } from 'react';
+import { Question } from '@/types/Quetions';
+import { useSearchParams } from 'next/navigation';
+import { getQuestions } from '@/features/quiz/getQuestions';
 export default function Quiz() {
+  const searchParams = useSearchParams();
+
+  const categoria = searchParams.get('categoria');
+  const dificuldade = searchParams.get('dificuldade');
+
   const [index, setIndex] = useState(0);
   const [respostaSelecionada, setRespostaSelecionada] = useState<string | null>(
     null
   );
   const [acertos, setAcertos] = useState(0);
   const [finalizado, setFinalizado] = useState(false);
+  const [feedback, setFeedback] = useState('');
+  const [perguntas, setPerguntas] = useState<Question[]>([]);
 
   const router = useRouter();
 
-  const perguntaAtual = questions[index];
+  const perguntaAtual = perguntas[index];
+
+  useEffect(() => {
+    async function carregarPerguntas() {
+      if (!categoria || !dificuldade) return;
+
+      const todas = await getQuestions();
+
+      const filtradas = todas.filter(q => {
+        return (
+          q.categoria.toLowerCase() === categoria.toLowerCase() &&
+          q.dificuldade.toLowerCase() === dificuldade.toLowerCase()
+        );
+      });
+
+      const embaralhadas = shuffleArray(
+        filtradas.map(q => ({
+          ...q,
+          opcoes: shuffleArray(q.opcoes),
+        }))
+      );
+
+      setPerguntas(embaralhadas);
+    }
+
+    carregarPerguntas();
+  }, [categoria, dificuldade]);
+  if (!perguntas.length && categoria && dificuldade) {
+    return <p className="text-white p-6">Carregando perguntas...</p>;
+  }
 
   function selecionarResposta(opcao: string) {
     if (respostaSelecionada) return;
@@ -25,13 +65,17 @@ export default function Quiz() {
 
     if (opcao === perguntaAtual.resposta) {
       setAcertos(acertos + 1);
+      setFeedback('✅ Resposta correta!');
+    } else {
+      setFeedback('❌ Resposta incorreta.');
     }
   }
 
   async function proximaPergunta() {
-    if (index + 1 < questions.length) {
+    if (index + 1 < perguntas.length) {
       setIndex(index + 1);
       setRespostaSelecionada(null);
+      setFeedback('');
     } else {
       setFinalizado(true);
 
@@ -50,7 +94,7 @@ export default function Quiz() {
         <h1 className="text-2xl mb-4">Resultado 🎉</h1>
 
         <p className="mb-4">
-          Você acertou {acertos} de {questions.length}
+          Você acertou {acertos} de {perguntas.length}
         </p>
 
         <button
@@ -81,6 +125,9 @@ export default function Quiz() {
         </div>
       </div>
 
+      <p className="text-sm text-slate-400 mb-2">
+        {perguntaAtual.categoria} • {perguntaAtual.dificuldade}
+      </p>
       {/* PERGUNTA */}
       <h1 className="text-xl mb-6">{perguntaAtual.pergunta}</h1>
 
@@ -108,6 +155,15 @@ export default function Quiz() {
           );
         })}
       </div>
+
+      {respostaSelecionada && (
+        <div className="mt-4">
+          <p>{feedback}</p>
+          <p className="text-sm text-slate-400 mt-2">
+            {perguntaAtual.explicacao}
+          </p>
+        </div>
+      )}
 
       {/* BOTÃO PRÓXIMA */}
       {respostaSelecionada && (
