@@ -63,7 +63,7 @@ export default function Dashboard() {
 
       {/* BOTÃO QUIZ */}
       <button
-        onClick={() => router.push('/quiz')}
+        onClick={() => router.push('/quiz/start')}
         className="bg-green-500 px-4 py-2 rounded-xl mb-4"
       >
         Começar Quiz 🎮
