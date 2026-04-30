@@ -1,3 +1,6 @@
+{
+  /*
+CODIGO DE BUSCAR AS QUESTOES NO FIREBASE,  
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '@/services/firebase';
 import { Question } from '@/types/Quetions';
@@ -11,4 +14,6 @@ export async function getQuestions(): Promise<Question[]> {
   }));
 
   return perguntas;
+}
+*/
 }

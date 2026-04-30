@@ -9,7 +9,7 @@ import { shuffleArray } from '@/utils/shuffle';
 import { useEffect } from 'react';
 import { Question } from '@/types/Quetions';
 import { useSearchParams } from 'next/navigation';
-import { getQuestions } from '@/features/quiz/getQuestions';
+//import { getQuestions } from "@/features/quiz/getQuestions";
 export default function Quiz() {
   const searchParams = useSearchParams();
 
@@ -29,33 +29,56 @@ export default function Quiz() {
 
   const perguntaAtual = perguntas[index];
 
+  {
+    /* substitua o useEffect atual caso queira puxar as perguntas do firebase
   useEffect(() => {
-    async function carregarPerguntas() {
-      if (!categoria || !dificuldade) return;
+  async function carregarPerguntas() {
+    if (!categoria || !dificuldade) return;
 
-      const todas = await getQuestions();
+    const todas = await getQuestions();
 
-      const filtradas = todas.filter(q => {
-        return (
-          q.categoria.toLowerCase() === categoria.toLowerCase() &&
-          q.dificuldade.toLowerCase() === dificuldade.toLowerCase()
-        );
-      });
-
-      const embaralhadas = shuffleArray(
-        filtradas.map(q => ({
-          ...q,
-          opcoes: shuffleArray(q.opcoes),
-        }))
+    const filtradas = todas.filter(q => {
+      return (
+        q.categoria.toLowerCase() === categoria.toLowerCase() &&
+        q.dificuldade.toLowerCase() === dificuldade.toLowerCase()
       );
+    });
 
-      setPerguntas(embaralhadas);
-    }
+    const embaralhadas = shuffleArray(
+      filtradas.map(q => ({
+        ...q,
+        opcoes: shuffleArray(q.opcoes),
+      }))
+    );
 
-    carregarPerguntas();
+    setPerguntas(embaralhadas);
+  }
+
+  carregarPerguntas();
+}, [categoria, dificuldade]);*/
+  }
+
+  useEffect(() => {
+    if (!categoria || !dificuldade) return;
+
+    const filtradas = questions.filter(q => {
+      return (
+        q.categoria.toLowerCase() === categoria?.toLowerCase() &&
+        q.dificuldade.toLowerCase() === dificuldade?.toLowerCase()
+      );
+    });
+
+    const embaralhadas = shuffleArray(
+      filtradas.map(q => ({
+        ...q,
+        opcoes: shuffleArray(q.opcoes),
+      }))
+    );
+
+    setPerguntas(embaralhadas);
   }, [categoria, dificuldade]);
   if (!perguntas.length && categoria && dificuldade) {
-    return <p className="text-white p-6">Carregando perguntas...</p>;
+    return <p className="text-white p-6">Carregando...</p>;
   }
 
   function selecionarResposta(opcao: string) {
