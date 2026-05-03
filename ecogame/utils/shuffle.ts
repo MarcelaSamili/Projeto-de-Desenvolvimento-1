@@ -1,3 +1,5 @@
+//esse cogico e para embaralhar as perguntas
+
 export function shuffleArray<T>(array: T[]): T[] {
   const newArray = [...array];
 
