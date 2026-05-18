@@ -212,118 +212,221 @@ export default function Quiz() {
   }
 
   if (finalizado) {
+    const porcentagem = Math.round((acertos / perguntas.length) * 100);
+
     return (
-      <main className="min-h-screen bg-slate-900 text-white flex flex-col items-center justify-center">
-        <h1 className="text-2xl mb-4">Resultado 🎉</h1>
+      <main className="min-h-screen bg-linear-to-br from-[#08140F] via-[#0B1D14] to-[#10271B] text-white overflow-hidden relative flex items-center justify-center px-6">
+        {/* GLOWS */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-green-500/10 blur-3xl rounded-full" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-400/10 blur-3xl rounded-full" />
 
-        <p className="mb-4">
-          Você acertou {acertos} de {perguntas.length}
-        </p>
+        <div className="relative z-10 w-full max-w-2xl">
+          <div className="bg-white/5 border border-white/10 backdrop-blur-2xl rounded-[40px] p-10 md:p-14 text-center shadow-2xl">
+            {/* TROFÉU */}
+            <div className="w-32 h-32 mx-auto rounded-[35px] bg-linear-to-br from-green-400 to-emerald-500 flex items-center justify-center text-6xl shadow-2xl shadow-green-500/20 mb-8">
+              🏆
+            </div>
 
-        <button
-          onClick={() => router.push('/dashboard')}
-          className="bg-green-500 px-4 py-2 rounded"
-        >
-          Voltar ao Dashboard
-        </button>
+            {/* TITULO */}
+            <h1 className="text-5xl font-black mb-4">Quiz Finalizado!</h1>
+
+            <p className="text-white/60 text-lg mb-10">
+              Você concluiu o desafio do EcoGame 🌱
+            </p>
+
+            {/* STATS */}
+            <div className="grid grid-cols-2 gap-5 mb-10">
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-6">
+                <p className="text-white/50 text-sm mb-2">Acertos</p>
+
+                <h2 className="text-4xl font-black text-green-400">
+                  {acertos}
+                </h2>
+              </div>
+
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-6">
+                <p className="text-white/50 text-sm mb-2">Precisão</p>
+
+                <h2 className="text-4xl font-black text-cyan-300">
+                  {porcentagem}%
+                </h2>
+              </div>
+            </div>
+
+            {/* XP */}
+            <div className="bg-green-500/10 border border-green-500/20 rounded-3xl p-6 mb-10">
+              <p className="text-green-300 text-sm mb-2">XP GANHO</p>
+
+              <h2 className="text-5xl font-black text-green-400">
+                +{acertos * 10} XP
+              </h2>
+            </div>
+
+            {/* MENSAGEM DINÂMICA */}
+            <div className="mb-10">
+              {porcentagem >= 80 && (
+                <p className="text-green-300 text-lg">
+                  🌟 Excelente desempenho!
+                </p>
+              )}
+
+              {porcentagem >= 50 && porcentagem < 80 && (
+                <p className="text-yellow-300 text-lg">
+                  🚀 Bom trabalho, continue evoluindo!
+                </p>
+              )}
+
+              {porcentagem < 50 && (
+                <p className="text-red-300 text-lg">
+                  📚 Continue praticando para melhorar!
+                </p>
+              )}
+            </div>
+
+            {/* BOTÕES */}
+            <div className="flex flex-col md:flex-row gap-4">
+              <button
+                onClick={() => router.push('/quiz/start')}
+                className="flex-1 bg-linear-to-r from-green-400 to-emerald-500 text-black font-black py-5 rounded-3xl text-lg hover:scale-[1.02] transition-all duration-300 shadow-2xl shadow-green-500/20"
+              >
+                Jogar Novamente 🎮
+              </button>
+
+              <button
+                onClick={() => router.push('/dashboard')}
+                className="flex-1 bg-white/5 border border-white/10 backdrop-blur-xl text-white font-bold py-5 rounded-3xl text-lg hover:bg-white/10 transition-all duration-300"
+              >
+                Dashboard 🏠
+              </button>
+            </div>
+          </div>
+        </div>
       </main>
     );
   }
-
   return (
-    <main className="min-h-screen bg-slate-900 text-white p-6">
-      {/* VIDAS NA TELA */}
-      <div className="flex gap-2 mb-4 text-2xl">
-        {[...Array(vidas)].map((_, i) => (
-          <span key={i}>❤️</span>
-        ))}
-      </div>
-      {/* STREAKS */}
-      <div className="mb-4 text-xl">
-        {streak >= 3 ? (
-          <p className="text-yellow-400 font-bold">🔥🔥🔥 COMBO x{streak}</p>
-        ) : (
-          <p>🔥 Streak: {streak}</p>
-        )}
-      </div>
+    <main className="min-h-screen bg-emerald-600 from-[#53ca98] via-[#388f63] to-[#6cffb3] text-white overflow-hidden relative">
+      {/* GLOWS */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-green-500/10 blur-3xl rounded-full" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-400/10 blur-3xl rounded-full" />
 
-      {/* PROGRESSO */}
-      <div className="mb-6">
-        <p className="mb-2">
-          Pergunta {index + 1} de {questions.length}
-        </p>
+      <div className="relative z-10 max-w-4xl mx-auto px-6 py-8">
+        {/* TOP HUD */}
+        <div className="flex flex-col gap-5 mb-10">
+          {/* TOP INFO */}
+          <div className="flex items-center justify-between gap-4 flex-wrap">
+            {/* VIDAS */}
+            <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-2xl px-5 py-3 flex items-center gap-2">
+              <span className="text-red-400 text-xl">❤️</span>
 
-        <div className="w-full bg-slate-700 h-3 rounded">
-          <div
-            className="bg-green-500 h-3 rounded"
-            style={{
-              width: `${((index + 1) / questions.length) * 100}%`,
-            }}
-          />
+              <span className="font-bold text-lg">{vidas}</span>
+            </div>
+
+            {/* STREAK */}
+            <div className="bg-orange-500/10 border border-orange-500/20 backdrop-blur-xl rounded-2xl px-5 py-3 flex items-center gap-2">
+              <span className="text-orange-400 text-xl">🔥</span>
+
+              <span className="font-bold text-lg">{streak}</span>
+            </div>
+
+            {/* TIMER */}
+            <div className="bg-cyan-500/10 border border-cyan-500/20 backdrop-blur-xl rounded-2xl px-5 py-3 flex items-center gap-2">
+              <span className="text-cyan-300 text-xl">⏱</span>
+
+              <span className="font-bold text-lg">{tempo}</span>
+            </div>
+          </div>
+
+          {/* PROGRESS */}
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-white/60 text-sm">
+                Pergunta {index + 1} de {perguntas.length}
+              </p>
+
+              <p className="text-green-400 text-sm font-bold">
+                {Math.round(((index + 1) / perguntas.length) * 100)}%
+              </p>
+            </div>
+
+            <div className="w-full h-4 bg-white/5 rounded-full overflow-hidden border border-white/10">
+              <div
+                className="h-full bg-linear-to-r from-green-400 to-emerald-500 transition-all duration-500"
+                style={{
+                  width: `${((index + 1) / perguntas.length) * 100}%`,
+                }}
+              />
+            </div>
+          </div>
         </div>
-      </div>
 
-      <p className="text-sm text-slate-400 mb-2">
-        {perguntaAtual.categoria} • {perguntaAtual.dificuldade}
-      </p>
-      {/* TIMER*/}
-      <div className="mb-4">
-        <p className="text-lg">⏱️ Tempo restante: {tempo}s</p>
-      </div>
-      <div className="w-full bg-slate-700 h-2 rounded mb-6">
-        <div
-          className="bg-yellow-400 h-2 rounded transition-all"
-          style={{
-            width: `${(tempo / 15) * 100}%`,
-          }}
-        />
-      </div>
-      {/* PERGUNTA */}
-      <h1 className="text-xl mb-6">{perguntaAtual.pergunta}</h1>
+        {/* QUIZ CARD */}
+        <div className="bg-white/5 border border-white/10 backdrop-blur-2xl rounded-[40px] p-8 md:p-10 shadow-2xl">
+          {/* CATEGORY */}
+          <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/20 text-green-300 px-4 py-2 rounded-full mb-6">
+            🌱 {perguntaAtual.categoria} • {perguntaAtual.dificuldade}
+          </div>
 
-      {/* OPÇÕES */}
-      <div className="flex flex-col gap-3">
-        {perguntaAtual.opcoes.map(opcao => {
-          let estilo = 'bg-slate-800';
+          {/* QUESTION */}
+          <h1 className="text-3xl md:text-4xl font-black leading-tight mb-10">
+            {perguntaAtual.pergunta}
+          </h1>
 
-          if (respostaSelecionada) {
-            if (opcao === perguntaAtual.resposta) {
-              estilo = 'bg-green-600';
-            } else if (opcao === respostaSelecionada) {
-              estilo = 'bg-red-600';
-            }
-          }
+          {/* OPTIONS */}
+          <div className="flex flex-col gap-4">
+            {perguntaAtual.opcoes.map(opcao => {
+              let estilo =
+                'bg-white/5 border-white/10 hover:border-green-400 hover:bg-green-500/10';
 
-          return (
-            <button
-              key={opcao}
-              onClick={() => selecionarResposta(opcao)}
-              className={`${estilo} p-3 rounded-xl`}
+              if (respostaSelecionada) {
+                if (opcao === perguntaAtual.resposta) {
+                  estilo =
+                    'bg-green-500 border-green-400 text-black scale-[1.02]';
+                } else if (opcao === respostaSelecionada) {
+                  estilo = 'bg-red-500 border-red-400 text-white';
+                } else {
+                  estilo = 'bg-white/5 border-white/5 opacity-50';
+                }
+              }
+
+              return (
+                <button
+                  key={opcao}
+                  onClick={() => selecionarResposta(opcao)}
+                  className={`${estilo} border backdrop-blur-xl rounded-3xl p-5 text-left transition-all duration-300`}
+                >
+                  <span className="text-lg font-semibold">{opcao}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* FEEDBACK */}
+          {respostaSelecionada && (
+            <div
+              className={`mt-8 p-5 rounded-3xl border ${
+                feedback.includes('correta')
+                  ? 'bg-green-500/10 border-green-500/20 text-green-300'
+                  : 'bg-red-500/10 border-red-500/20 text-red-300'
+              }`}
             >
-              {opcao}
+              <p className="font-bold text-lg mb-2">{feedback}</p>
+
+              <p className="text-white/70">{perguntaAtual.explicacao}</p>
+            </div>
+          )}
+
+          {/* NEXT BUTTON */}
+          {respostaSelecionada && (
+            <button
+              onClick={proximaPergunta}
+              className="mt-8 w-full bg-linear-to-r from-green-400 to-emerald-500 text-black font-black py-5 rounded-3xl text-lg hover:scale-[1.01] transition-all duration-300 shadow-2xl shadow-green-500/20"
+            >
+              Próxima Pergunta →
             </button>
-          );
-        })}
-      </div>
-
-      {respostaSelecionada && (
-        <div className="mt-4">
-          <p>{feedback}</p>
-          <p className="text-sm text-slate-400 mt-2">
-            {perguntaAtual.explicacao}
-          </p>
+          )}
         </div>
-      )}
-
-      {/* BOTÃO PRÓXIMA */}
-      {respostaSelecionada && (
-        <button
-          onClick={proximaPergunta}
-          className="mt-6 bg-blue-500 px-4 py-2 rounded"
-        >
-          Próxima →
-        </button>
-      )}
+      </div>
     </main>
   );
 }

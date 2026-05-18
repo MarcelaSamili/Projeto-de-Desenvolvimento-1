@@ -5,6 +5,7 @@ import { Leaf, Trophy, BookOpen, ChevronRight, Menu } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
+
 import { useRouter } from 'next/navigation';
 
 export default function EcoGameHome() {
@@ -23,10 +24,6 @@ export default function EcoGameHome() {
             <p className="text-xs text-white/70">Aprenda jogando</p>
           </div>
         </div>
-
-        <button className="bg-white/5 border border-white/10 p-3 rounded-2xl hover:bg-white/10 transition-all duration-300">
-          <Menu className="w-5 h-5" />
-        </button>
       </header>
 
       {/* HERO */}
@@ -66,22 +63,15 @@ export default function EcoGameHome() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Button
               onClick={() => router.push('/login')}
-              className="bg-green-500 hover:bg-green-400 text-black font-bold px-8 py-7 rounded-2xl text-lg shadow-2xl shadow-green-500/20 transition-all duration-300 hover:scale-105"
+              className="bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-7 rounded-2xl text-lg shadow-2xl shadow-green-500/20 transition-all duration-300 hover:scale-105"
             >
               Começar agora
               <ChevronRight className="ml-2 w-5 h-5" />
             </Button>
-
-            <Button
-              variant="outline"
-              className="border-white/20 bg-white/5 hover:bg-white/10 px-8 py-7 rounded-2xl text-lg"
-            >
-              Como funciona?
-            </Button>
           </div>
 
           {/* STATS */}
-          <div className="grid grid-cols-3 gap-4 mt-14">
+          <div className="grid grid-cols-3 gap-4 mt-14 text-white">
             {[
               ['2.543', 'Jogadores'],
               ['15.328', 'Quizzes'],
@@ -178,7 +168,7 @@ export default function EcoGameHome() {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="mb-12 text-center">
+          <div className="mb-12 text-center text-white">
             <h2 className="text-4xl text-white mb-4">Como funciona?</h2>
 
             <p className="text-white/60 text-lg">
