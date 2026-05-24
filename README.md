@@ -30,7 +30,7 @@ O projeto foi desenvolvido como trabalho acadêmico utilizando:
 
 ---
 
-# 🛠 Tecnologias
+#  Tecnologias
 
 - Next.js
 - React
@@ -101,12 +101,6 @@ http://localhost:3000
 /utils
 /data
 ```
-
----
-
-#  Preview
-
-Adicionar screenshots futuramente.
 
 ---
 
