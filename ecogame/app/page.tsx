@@ -27,7 +27,7 @@ export default function EcoGameHome() {
       </header>
 
       {/* HERO */}
-      <section className="relative px-6 md:px-16 py-16 grid lg:grid-cols-2 gap-12 items-center">
+      <section className="relative px-6 md:px-16 py-16 md:grid lg:grid-cols-2 gap-12 items-center ">
         {/* Glow */}
         <div className="absolute top-20 left-10 w-72 h-72 bg-green-500/20 blur-3xl rounded-full" />
         <div className="absolute bottom-10 right-10 w-80 h-80 bg-emerald-400/10 blur-3xl rounded-full" />
@@ -63,7 +63,7 @@ export default function EcoGameHome() {
           <div className="flex flex-col sm:flex-row gap-4">
             <Button
               onClick={() => router.push('/login')}
-              className="bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-7 rounded-2xl text-lg shadow-2xl shadow-green-500/20 transition-all duration-300 hover:scale-105"
+              className=" bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-7 rounded-2xl text-lg shadow-2xl shadow-green-500/20 transition-all duration-300 hover:scale-105"
             >
               Começar agora
               <ChevronRight className="ml-2 w-5 h-5" />
@@ -71,7 +71,7 @@ export default function EcoGameHome() {
           </div>
 
           {/* STATS */}
-          <div className="grid grid-cols-3 gap-4 mt-14 text-white">
+          <div className="md:grid md:grid-cols-3 md:gap-4 md:mt-14  text-white">
             {[
               ['2.543', 'Jogadores'],
               ['15.328', 'Quizzes'],
@@ -83,7 +83,7 @@ export default function EcoGameHome() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 + index * 0.2 }}
               >
-                <Card className="bg-white/5 border-white/10 backdrop-blur-xl rounded-3xl">
+                <Card className="bg-white/5 border-white/10 backdrop-blur-xl rounded-3xl mt-3 md:mt-0">
                   <CardContent className="p-6">
                     <h3 className="text-2xl font-black text-green-400 mb-1">
                       {item[0]}
@@ -140,7 +140,7 @@ export default function EcoGameHome() {
           </motion.div>
 
           {/* Main card */}
-          <div className="relative w-full  rounded-[40px] bg-emerald-900 from-green-500/20 to-emerald-300/10 border border-white/10 backdrop-blur-2xl p-10 overflow-hidden shadow-2xl shadow-green-500/10">
+          <div className="relative w-full mt-4 rounded-[40px] bg-emerald-900 from-green-500/20 to-emerald-300/10 border border-white/10 backdrop-blur-2xl p-10 overflow-hidden shadow-2xl shadow-green-500/10">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.15),transparent_60%)]" />
 
             <motion.div

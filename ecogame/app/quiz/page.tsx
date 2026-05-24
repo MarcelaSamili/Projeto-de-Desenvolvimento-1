@@ -37,26 +37,27 @@ export default function Quiz() {
 
   const correctSound = useRef<HTMLAudioElement | null>(null);
   const wrongSound = useRef<HTMLAudioElement | null>(null);
-  const timeoutSound = useRef<HTMLAudioElement | null>(null);
+  //const timeoutSound = useRef<HTMLAudioElement | null>(null);
   const finishSound = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     correctSound.current = new Audio(
       '/sounds/mixkit-winning-a-coin-video-game-2069.wav'
     );
+
     wrongSound.current = new Audio(
       '/sounds/mixkit-player-losing-or-failing-2042.wav'
     );
-    timeoutSound.current = new Audio('/sounds/mixkit-game-level-music-689.wav');
+    //timeoutSound.current = new Audio('/sounds/mixkit-game-level-music-689.wav');
     finishSound.current = new Audio(
-      '/sounds/mixkit-completion-of-a-level-2063'
+      '/sounds/mixkit-completion-of-a-level-2063.wav'
     );
     // VOLUME
     if (correctSound.current) correctSound.current.volume = 0.2;
 
     if (wrongSound.current) wrongSound.current.volume = 0.2;
 
-    if (timeoutSound.current) timeoutSound.current.volume = 0.2;
+    //if (timeoutSound.current) timeoutSound.current.volume = 0.2;
 
     if (finishSound.current) finishSound.current.volume = 0.5;
   }, []);
@@ -95,9 +96,9 @@ export default function Quiz() {
     if (respostaSelecionada || finalizado || gameOver) return;
     // Toca o som quando o tempo estiver menor ou igual a 14
     if (tempo >= 1) {
-      timeoutSound.current?.play();
+      //timeoutSound.current?.play();
     } else if (tempo <= 0) {
-      timeoutSound.current?.pause();
+      //timeoutSound.current?.pause();
     }
     // Ação quando o tempo se esgota
     if (tempo <= 0) {
@@ -180,8 +181,8 @@ export default function Quiz() {
       setRespostaSelecionada(null);
       setFeedback('');
     } else {
-      setFinalizado(true);
       finishSound.current?.play();
+      setFinalizado(true);
 
       // cálculo de XP
       const bonus = streak >= 3 ? streak * 5 : 0;

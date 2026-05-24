@@ -25,12 +25,6 @@ export default function QuizStart() {
         {/* LADO ESQUERDO */}
         <div className="hidden lg:flex flex-col justify-between p-12 bg-gradient-to-br from-green-500/10 to-emerald-300/5 border-r border-white/10">
           <div>
-            <Button
-              className=" text-white mb-6 border rounded-4xl p-2 bg-emerald-600 border-emerald-600"
-              onClick={() => router.push('/dashboard')}
-            >
-              <FaArrowLeftLong />
-            </Button>
             <div className="flex items-center gap-3 mb-8">
               <div className="w-14 h-14 rounded-3xl bg-green-500 flex items-center justify-center shadow-lg shadow-green-500/30">
                 🎮
@@ -136,13 +130,19 @@ export default function QuizStart() {
           {/* BOTÃO */}
           <button
             onClick={iniciarQuiz}
-            className="w-full bg-green-500 hover:bg-green-400 text-black font-bold py-5 rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-2xl shadow-green-500/20 text-lg"
+            className="w-full bg-green-500 hover:bg-green-400 text-white font-bold py-5 rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-2xl shadow-green-500/20 text-lg"
           >
-            🚀 Começar Quiz
+            Começar Quiz
           </button>
 
+          <Button
+            className=" mt-3 text-black mb-6 border rounded-4xl p-2 bg-emerald-600 border-emerald-600"
+            onClick={() => router.push('/dashboard')}
+          >
+            <p>Voltar ao Dashborard</p>
+          </Button>
           {/* INFO EXTRA */}
-          <div className="mt-6 text-center text-sm text-white/40">
+          <div className="mt-4 text-center text-sm text-white/40">
             Cada resposta correta aumenta seu XP e streak.
           </div>
         </div>
