@@ -149,7 +149,7 @@ export default function EcoGameHome() {
               className="relative z-10 flex justify-center"
             >
               <Image
-                src="/public/image/eco2.png"
+                src="/image/eco2.png"
                 alt="EcoGame"
                 width={500}
                 height={500}
