@@ -1,3 +1,5 @@
+//Esse codigo manipula os XPs trabalhando com o banco para construir o ranking
+
 import { doc, getDoc, updateDoc } from 'firebase/firestore';
 import { db } from '@/services/firebase';
 
