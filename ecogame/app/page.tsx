@@ -151,9 +151,9 @@ export default function EcoGameHome() {
               <Image
                 src="/image/eco2.png"
                 alt="EcoGame"
-                width={700}
-                height={600}
-                className="rounded-3xl object-cover "
+                width={500}
+                height={500}
+                className="rounded-3xl w-64 h-auto"
               />
             </motion.div>
           </div>

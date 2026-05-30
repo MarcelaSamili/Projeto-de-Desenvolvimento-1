@@ -1,9 +1,8 @@
 import './globals.css';
-import { Inter } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { Inter } from 'next/font/google';
+import { cn } from '@/lib/utils';
 
-const inter = Inter({subsets:['latin'],variable:'--font-sans'});
-
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 export default function RootLayout({
   children,
@@ -11,8 +10,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="pt-br" className={cn("font-sans", inter.variable)}>
-      <body className="bg-slate-900">{children}</body>
+    <html lang="pt-br" className={cn('font-sans', inter.variable)}>
+      <body>{children}</body>
     </html>
   );
 }
