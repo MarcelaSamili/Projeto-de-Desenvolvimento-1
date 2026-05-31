@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌱 EcoGame
 
-## Getting Started
+EcoGame é um aplicativo web gamificado inspirado no estilo Duolingo, criado para ensinar sustentabilidade, reciclagem e energia renovável de forma interativa.
 
-First, run the development server:
+O projeto foi desenvolvido como trabalho acadêmico utilizando:
+
+- Next.js
+- TypeScript
+- TailwindCSS
+- Firebase Authentication
+- Firestore Database
+
+---
+
+#  Funcionalidades
+
+✅ Sistema de Login e Cadastro  
+✅ Recuperação de senha  
+✅ Perfil do usuário  
+✅ Ranking global  
+✅ Sistema de XP e níveis  
+✅ Sistema de vidas ❤️  
+✅ Timer ⏱  
+✅ Streak 🔥  
+✅ Feedback visual e sonoro  
+✅ Perguntas por categoria  
+✅ Perguntas por dificuldade  
+✅ Interface moderna estilo game/Duolingo  
+✅ Responsivo para mobile
+
+---
+
+#  Tecnologias
+
+- Next.js
+- React
+- TypeScript
+- TailwindCSS
+- Firebase
+- Framer Motion
+
+---
+
+#  Como executar o projeto
+
+## 1. Clone o repositório
+
+```bash
+git clone https://github.com/SEU-USUARIO/ecogame.git
+```
+
+## 2. Entre na pasta
+
+```bash
+cd ecogame
+```
+
+## 3. Instale as dependências
+
+```bash
+npm install
+```
+
+## 4. Configure o Firebase
+
+Crie um arquivo `.env.local`
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+```
+
+---
+
+#  Executar o projeto
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Depois abra:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```txt
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+#  Estrutura do Projeto
 
-To learn more about Next.js, take a look at the following resources:
+```txt
+/app
+/components
+/features
+/services
+/types
+/utils
+/data
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#  Preview
 
-## Deploy on Vercel
+Adicionar screenshots futuramente.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+#  Autor
+
+Desenvolvido por MARCELA SAMILI SANTOS BARROSO.
